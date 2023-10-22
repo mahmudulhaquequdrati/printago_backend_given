@@ -29,9 +29,10 @@ app.use(express.static("view"));
 app.use(
   cors({
     origin: [
-      "https://printgo-frontend.vercel.app",
-      "http://localhost:3000",
-      "http://127.0.0.1:5173",
+      // "https://printgo-frontend.vercel.app",
+      // "http://localhost:3000",
+      // "http://127.0.0.1:5173",
+      "*",
     ],
     methods: ["POST", "GET", "PUT"],
     credentials: true,
@@ -67,8 +68,8 @@ app.get("/api/payments", (req, res) => {
           currency: "EUR",
         },
         description: "New Payment",
-        redirectUrl: "https://printgo-backend.vercel.app/",
-        webhookUrl: "https://printgo-backend.vercel.app/webhook",
+        redirectUrl: "https://printago-backend-given.vercel.app/",
+        webhookUrl: "https://printago-backend-given.vercel.app/webhook",
       })
       .then((payment) => {
         res.send({ id: payment.id, url: payment.getPaymentUrl() });
