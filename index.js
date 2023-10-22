@@ -26,7 +26,19 @@ connectDB();
 const app = express();
 app.use(express.static("view"));
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://printgo-frontend.vercel.app",
+      "http://localhost:3000",
+      "http://127.0.0.1:5173",
+      "https://dreamy-llama-2ad359.netlify.app",
+      "*",
+    ],
+    methods: ["POST", "GET", "PUT"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
