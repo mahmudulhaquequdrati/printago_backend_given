@@ -26,18 +26,7 @@ connectDB();
 const app = express();
 app.use(express.static("view"));
 
-app.use(
-  cors({
-    origin: [
-      // "https://printgo-frontend.vercel.app",
-      // "http://localhost:3000",
-      // "http://127.0.0.1:5173",
-      "*",
-    ],
-    methods: ["POST", "GET", "PUT"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
